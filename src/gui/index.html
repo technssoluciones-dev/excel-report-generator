@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Reportes Excel - Consultorios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Generador de Reportes Médicos</h2>
+
+    <!-- ① Selección de Archivo -->
+    <section class="step-card">
+      <h3>① Seleccionar Archivo de Entrada</h3>
+      <input type="file" id="fileInput" accept=".csv, .xlsx, .xls, .json" />
+    </section>
+
+    <!-- ② Configuración de Columnas -->
+    <section class="step-card">
+      <h3>② Columna de Identificación</h3>
+      <select id="clinicColumnSelect"><option>Cargue un archivo primero...</option></select>
+    </section>
+
+    <!-- ③ Selección de Métricas -->
+    <section class="step-card">
+      <h3>③ Seleccionar Métricas a Incluir</h3>
+      <div class="duallist-box">
+        <select id="availableMetrics" multiple size="5"></select>
+        <div class="duallist-actions">
+          <button id="addBtn">&gt;&gt;</button>
+          <button id="removeBtn">&lt;&lt;</button>
+        </div>
+        <select id="selectedMetrics" multiple size="5"></select>
+      </div>
+    </section>
+
+    <!-- ④ Modo de Reporte -->
+    <section class="step-card">
+      <h3>④ Modo de Operación</h3>
+      <label><input type="checkbox" id="enablePeriodCompare"> Activar comparación entre períodos (ej. Mes A vs Mes B)</label>
+      <input type="file" id="secondFileInput" accept=".csv, .xlsx, .json" disabled />
+    </section>
+
+    <!-- ⑤ Ruta de Salida -->
+    <section class="step-card">
+      <h3>⑤ Carpeta de Destino</h3>
+      <button id="selectOutputDirBtn">Seleccionar Carpeta...</button>
+      <span id="outputDirPath">No seleccionada</span>
+    </section>
+
+    <!-- ⑥ Ejecución -->
+    <section class="step-card">
+      <h3>⑥ Generación</h3>
+      <button id="generateBtn" class="primary-btn">Generar Reporte Excel</button>
+    </section>
+
+    <!-- Consola de Log en Vivo con Colores -->
+    <section class="log-card">
+      <div class="log-header">Log de Procesamiento</div>
+      <div id="consoleLog" class="log-body"></div>
+    </section>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
